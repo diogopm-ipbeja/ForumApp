@@ -12,10 +12,6 @@ import pt.ipbeja.forumapp.databinding.AddCommentFragmentBinding
 // TODO Display the post and a text input
 class AddCommentFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AddCommentFragment()
-    }
-
     private lateinit var binding: AddCommentFragmentBinding
 
     private val viewModel: ViewPostViewModel by navGraphViewModels(R.id.postNavigation)
@@ -26,6 +22,10 @@ class AddCommentFragment : Fragment() {
     ): View = AddCommentFragmentBinding.inflate(inflater).let {
         this.binding = it
         it.root
+    }
+
+    fun addComment() {
+
     }
 
 

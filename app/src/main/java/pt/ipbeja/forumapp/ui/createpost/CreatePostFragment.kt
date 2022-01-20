@@ -5,28 +5,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import pt.ipbeja.forumapp.R
+import pt.ipbeja.forumapp.databinding.CreatePostFragmentBinding
 
 class CreatePostFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CreatePostFragment()
-    }
 
-    private lateinit var viewModel: CreatePostViewModel
+    private lateinit var binding: CreatePostFragmentBinding
+    private val viewModel: CreatePostViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.create_post_fragment, container, false)
+    ) = CreatePostFragmentBinding.inflate(inflater).let {
+        this.binding = it
+        it.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreatePostViewModel::class.java)
-        // TODO: Use the ViewModel
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        binding.submit.setOnClickListener {
+            // get text from input
+            // create post
+            // call viewModel.addPost(post)
+            // pop backstack
+        }
     }
 
 }

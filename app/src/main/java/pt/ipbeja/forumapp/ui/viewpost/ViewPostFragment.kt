@@ -15,6 +15,7 @@ import pt.ipbeja.forumapp.databinding.ViewPostFragmentBinding
 class ViewPostFragment : Fragment() {
 
     private val args : ViewPostFragmentArgs by navArgs()
+
     private val viewModel: ViewPostViewModel by navGraphViewModels(R.id.postNavigation, factoryProducer = { ViewPostViewModel.Factory(args.postId) })
 
     private lateinit var binding: ViewPostFragmentBinding

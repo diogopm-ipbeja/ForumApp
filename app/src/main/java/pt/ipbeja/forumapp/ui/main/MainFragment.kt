@@ -1,5 +1,6 @@
 package pt.ipbeja.forumapp.ui.main
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.ZoneId
 
+
 val differ = object : DiffUtil.ItemCallback<Post>() {
 
     override fun areItemsTheSame(oldItem: Post, newItem: Post) : Boolean {
@@ -36,11 +38,12 @@ val differ = object : DiffUtil.ItemCallback<Post>() {
     }
 }
 
+
 class MainFragment : Fragment() {
-
     private lateinit var binding: MainFragmentBinding
-    private val viewModel: MainViewModel by viewModels()
 
+
+    private val viewModel: MainViewModel by viewModels()
 
     private val adapter: PostsAdapter = PostsAdapter()
 
@@ -59,9 +62,11 @@ class MainFragment : Fragment() {
         // With Flow
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+
                 viewModel.posts.collect {
                     handleResourceUpdate(it)
                 }
+
             }
         }
         // With LiveData
